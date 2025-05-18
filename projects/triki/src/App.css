@@ -12,7 +12,9 @@
 
 .board{
   height:500px;
-  max-height: 500px;
+  width: 500px;  
+  max-height: 60vh;
+  max-width: 80vw;
     /* margin: 4px auto 100px auto;  */
     display: grid;
     grid-template-columns: repeat(3,1fr); 
