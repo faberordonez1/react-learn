@@ -15,12 +15,10 @@
   width: 500px;  
   max-height: 60vh;
   max-width: 80vw;
-    /* margin: 4px auto 100px auto;  */
-    display: grid;
-    grid-template-columns: repeat(3,1fr); 
-    gap: 1em;
-    /* aspect-ratio: 1/1; */
-    margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3,1fr); 
+  gap: 1em;
+  margin: auto;
 }
   
 .square {
