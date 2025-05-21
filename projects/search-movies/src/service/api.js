@@ -1,4 +1,5 @@
-let API = 'https://api.themoviedb.org/3/movie/550?api_key=';
+// let API = 'https://api.themoviedb.org/3/movie/550';
+let API='https://api.themoviedb.org/3/search/collection';
 let api_key ='e1ee3a585e3ff2efd9d0a990db15e813';
 
 

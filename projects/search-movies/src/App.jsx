@@ -1,17 +1,19 @@
 
 import './App.css'
 import responseMovies from './result.json'
-// import { getUrlImg } from './service/api';
+import { useState } from 'react';
+import { getMovies } from './service/api';
+
 
 
 function App() {
+ const [movies, setMovies] = useState([]);
 
   let urlImage = 'https://image.tmdb.org/t/p/w342';
 
   // let API = 'https://api.themoviedb.org/3/movie/550';
   let API ='https://api.themoviedb.org/3/search/collection';
   let api_key ='e1ee3a585e3ff2efd9d0a990db15e813';
-  let movies = responseMovies.results;  
 
   
   let URL_IMG=''
@@ -22,7 +24,7 @@ function App() {
     let baseUrl = images.secure_base_url;
     let size =images.still_sizes[3];
     URL_IMG = baseUrl + size;
-    movies = responseMovies.results;
+    // movies = responseMovies.results;
   })
   .catch((error) => {
     console.error('Error:', error);
@@ -30,24 +32,37 @@ function App() {
   );
 
 
-  fetch(API + '?api_key=' + api_key+ '&query=batman')
-  .then((resp)=> resp.json())
-  .then((json) => {
-    console.log(json);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+  // fetch(API + '?api_key=' + api_key+ '&query=batman')
+  // .then((resp)=> resp.json())
+  // .then((json) => {
+  //   console.log(json);
+  // })
+  // .catch((error) => {
+  //   console.error('Error:', error);
+  // });
+
+  async function searchMovies(e) {
+    e.preventDefault();
+    let query = e.target[0].value;
+    if (!query) return;
+
+    let newMOvies = await getMovies(query);
+    // console.log('new MOvies',newMOvies);
+    // newMOvies = responseMovies.results;
+
+    
+    setMovies(newMOvies.results);
+  }
 
   
 
   return (
     <>
-    <div >
+    <form  onSubmit={(e) => {searchMovies(e)}}>
       <h1>Search Movies</h1>
       <input type="text" placeholder="Search for a movie..." />
       <button>Search</button>
-    </div>
+    </form>
     <div className= "App">
       {
          movies.map(movie =>{
