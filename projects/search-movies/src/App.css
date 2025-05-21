@@ -1,0 +1,20 @@
+.App{
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.movie{
+  text-align: center;
+  border-radius: 20px;
+  border:3px solid lightgray;
+  padding: 1rem;
+  width: 300px;
+}
+.movie img{
+  width: 100%;
+  border-radius: 20px;
+}
