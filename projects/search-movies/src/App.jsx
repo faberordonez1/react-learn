@@ -3,6 +3,7 @@ import './App.css'
 import responseMovies from './result.json'
 import { useState } from 'react';
 import { getMovies } from './service/api';
+import CardMovie from './components/CardMovie';
 
 
 
@@ -57,27 +58,19 @@ function App() {
   
 
   return (
-    <>
-    <form  onSubmit={(e) => {searchMovies(e)}}>
-      <h1>Search Movies</h1>
-      <input type="text" placeholder="Search for a movie..." />
-      <button>Search</button>
-    </form>
-    <div className= "App">
-      {
-         movies.map(movie =>{
-          return (
-            <div key={movie.id} className="movie">
-              <img src={urlImage+movie.poster_path} alt={movie.name} />
-              <h2>{movie.name}</h2>
-              <p>{movie.overview}</p>
-            </div>
-          )
-        })
-      }
+    <main className='container'>
+      <form  onSubmit={(e) => {searchMovies(e)}}>
+        <h1>Search Movies</h1>
+        <input type="text" placeholder="Search for a movie..." />
+        <button>Search</button>
+      </form>
+      <div className= "App">
+        {
+          movies.map(movie => <CardMovie movie={movie} key={movie.id}/>)
+        }
 
-    </div>
-    </>
+      </div>
+    </main>
   )
 }
 

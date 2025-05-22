@@ -1,10 +1,14 @@
-.App{
-  width: 100%;
+.container{
+  width: 90vw;
   max-width: 1200px;
   margin: 30px;
+}
+.App{
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  justify-items: center;
 }
 
 .movie{
@@ -12,7 +16,7 @@
   border-radius: 20px;
   border:3px solid lightgray;
   padding: 1rem;
-  width: 300px;
+  width: 200px;
 }
 .movie img{
   width: 100%;
