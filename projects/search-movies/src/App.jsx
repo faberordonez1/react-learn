@@ -66,7 +66,7 @@ function App() {
       </form>
       <div className= "App">
         {
-          movies.map(movie => <CardMovie movie={movie} key={movie.id}/>)
+          movies.map(movie => movie?.poster_path && <CardMovie movie={movie} key={movie.id}/>)
         }
 
       </div>
