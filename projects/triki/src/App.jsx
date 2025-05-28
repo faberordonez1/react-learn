@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Square from './Square.jsx'
+import confetti from 'canvas-confetti'
 
 function App() {
   const Turn={X: 'X',O: 'O'  }
@@ -23,6 +24,7 @@ function App() {
     if (isWinner(i,newBoard)) {
       setMessage(`Ganador ${turn} 🏆🏆`);
       setEndGame(true);
+      confetti()
     }else if (empate(newBoard)) {
       setMessage('Empate 🤝');
       setEndGame(true);
