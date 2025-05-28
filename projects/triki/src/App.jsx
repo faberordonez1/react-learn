@@ -10,7 +10,7 @@ function App() {
   const [turn, setTurn] = useState(getStorageValue('turn') || Turn.X);
   const [message, setMessage] = useState(getStorageValue('message') || 'Turno '+Turn.X);
   const [board, setBoard] = useState(JSON.parse(getStorageValue('board')) || Array(9).fill(null));
-  const [endGame, setEndGame] = useState(getStorageValue('endGame') ||false);
+  const [endGame, setEndGame] = useState( getStorageValue('endGame') || '');
 
 
   function handleClick(i) { 
@@ -23,9 +23,9 @@ function App() {
     newBoard[i] = turn;
     setBoard(newBoard);
     window.localStorage.setItem('board', JSON.stringify(newBoard));
-    window.localStorage.setItem('turn', turn);
+    
     let mensaje = ``;
-    let endGamee = endGame;
+    let endGamee='' ;
 
     if (isWinner(i,newBoard)) {
       mensaje =`Ganador ${turn} 🏆🏆`;
@@ -41,10 +41,11 @@ function App() {
       setEndGame(endGamee);
     }
     else {
-      let newTurn = turn === Turn.X ? Turn.O : Turn.X;    
+      let newTurn = turn === Turn.X ? Turn.O : Turn.X;  
+      window.localStorage.setItem('turn', newTurn);  
       setTurn(newTurn);
       setMessage('Turno ' + newTurn);
-    }
+    }    
     window.localStorage.setItem('message', mensaje);
     window.localStorage.setItem('endGame', endGamee);
   }
@@ -80,6 +81,7 @@ function App() {
     window.localStorage.removeItem('board');
     window.localStorage.removeItem('turn');
     window.localStorage.removeItem('message');
+    window.localStorage.removeItem('endGame');
   }
 
 
