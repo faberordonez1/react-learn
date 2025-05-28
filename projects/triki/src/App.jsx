@@ -3,15 +3,16 @@ import './App.css'
 import Square from './Square.jsx'
 
 function App() {
-  const [turn, setTurn] = useState('X');
-  const [message, setMessage] = useState('Turno X');
+  const Turn={X: 'X',O: 'O'  }
+  const [turn, setTurn] = useState(Turn.X);
+  const [message, setMessage] = useState('Turno '+Turn.X);
   const [board, setBoard] = useState(Array(9).fill(null));
 
+  const [endGame, setEndGame] = useState(false);
+
   function handleClick(i) { 
-    if(!turn) {
-      restart();
-      return;
-    }
+
+    if (endGame) return;
 
     if (board[i]) return;
 
@@ -21,10 +22,15 @@ function App() {
 
     if (isWinner(i,newBoard)) {
       setMessage(`Ganador ${turn} 🏆🏆`);
-      setTurn(null);
-    }else {    
-      setTurn(turn === 'X' ? 'O' : 'X');
-      setMessage(turn === 'X' ? 'Turno O' : 'Turno X');
+      setEndGame(true);
+    }else if (empate(newBoard)) {
+      setMessage('Empate 🤝');
+      setEndGame(true);
+    }
+    else {
+      let newTurn = turn === Turn.X ? Turn.O : Turn.X;    
+      setTurn(newTurn);
+      setMessage('Turno ' + newTurn);
     }
   }
 
@@ -47,18 +53,24 @@ function App() {
     .some(([a,b,c]) => idxBoxSel.includes(a) && idxBoxSel.includes(b) && idxBoxSel.includes(c));
   }
 
+  function empate(newBoard) {
+    return newBoard.every((value) => value !== null) 
+  }
+
   function restart() {
     setTurn('X');
     setMessage('Turno X');
     setBoard(Array(9).fill(null));
+    setEndGame(false);
   }
 
 
   return (
     <main className="App">
       <h1>{message}</h1>
+      {endGame && <button className='restart' onClick={restart}> Reiniciar Juego 🔄</button>} 
       <div className="board">
-        {board.map((value, i) => (
+        { board.map((value, i) => (
           <Square
             key={i}
             value={value}

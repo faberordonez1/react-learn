@@ -2,6 +2,7 @@
  
 }
 .App{
+  margin-top: 10px;
   text-align: center;
   color: #585858;
 
@@ -34,4 +35,11 @@
   color: white;
   box-shadow:  18px 18px 35px #8f8f8f,
              -18px -18px 35px #ffffff;      
+}
+
+.restart{
+  margin: auto;
+  width: 80vw;
+  max-width: 300px;
+  font-size: 1.5rem;
 }
