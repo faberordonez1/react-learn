@@ -4,12 +4,14 @@ import Square from './Square.jsx'
 import confetti from 'canvas-confetti'
 
 function App() {
-  const Turn={X: 'X',O: 'O'  }
-  const [turn, setTurn] = useState(Turn.X);
-  const [message, setMessage] = useState('Turno '+Turn.X);
-  const [board, setBoard] = useState(Array(9).fill(null));
 
-  const [endGame, setEndGame] = useState(false);
+  let getStorageValue = (key) => window.localStorage.getItem(key) || null;
+  const Turn={X: 'X',O: 'O'  }
+  const [turn, setTurn] = useState(getStorageValue('turn') || Turn.X);
+  const [message, setMessage] = useState(getStorageValue('message') || 'Turno '+Turn.X);
+  const [board, setBoard] = useState(JSON.parse(getStorageValue('board')) || Array(9).fill(null));
+  const [endGame, setEndGame] = useState(getStorageValue('endGame') ||false);
+
 
   function handleClick(i) { 
 
@@ -20,20 +22,31 @@ function App() {
     let newBoard = [...board];
     newBoard[i] = turn;
     setBoard(newBoard);
+    window.localStorage.setItem('board', JSON.stringify(newBoard));
+    window.localStorage.setItem('turn', turn);
+    let mensaje = ``;
+    let endGamee = endGame;
 
     if (isWinner(i,newBoard)) {
-      setMessage(`Ganador ${turn} 🏆🏆`);
-      setEndGame(true);
+      mensaje =`Ganador ${turn} 🏆🏆`;
+      endGamee = true;
+      setMessage(mensaje);
+      setEndGame(endGamee);
+
       confetti()
     }else if (empate(newBoard)) {
-      setMessage('Empate 🤝');
-      setEndGame(true);
+      mensaje =`Empate 🤝`;
+      endGamee = true;
+      setMessage(mensaje);
+      setEndGame(endGamee);
     }
     else {
       let newTurn = turn === Turn.X ? Turn.O : Turn.X;    
       setTurn(newTurn);
       setMessage('Turno ' + newTurn);
     }
+    window.localStorage.setItem('message', mensaje);
+    window.localStorage.setItem('endGame', endGamee);
   }
 
   function isWinner(i,newBoard){    
@@ -64,6 +77,9 @@ function App() {
     setMessage('Turno X');
     setBoard(Array(9).fill(null));
     setEndGame(false);
+    window.localStorage.removeItem('board');
+    window.localStorage.removeItem('turn');
+    window.localStorage.removeItem('message');
   }
 
 
