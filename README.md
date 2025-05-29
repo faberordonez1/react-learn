@@ -39,7 +39,8 @@ confetti()
 "scripts": {
     // Otros scripts
     "lint": "standard",
-    "lint-standard": "standard"
+    "lint-standard": "standard",
+    "lint-standard-fix": "standard --fix"
   },
 
  "eslintConfig": {

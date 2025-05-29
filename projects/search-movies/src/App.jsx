@@ -1,37 +1,32 @@
-
 import './App.css'
 import responseMovies from './result.json'
-import { useState } from 'react';
-import { getMovies } from './service/api';
-import CardMovie from './components/CardMovie';
+import { useState } from 'react'
+import { getMovies } from './service/api'
+import CardMovie from './components/CardMovie'
 
+function App () {
+  const [movies, setMovies] = useState([])
 
-
-function App() {
- const [movies, setMovies] = useState([]);
-
-  let urlImage = 'https://image.tmdb.org/t/p/w342';
+  const urlImage = 'https://image.tmdb.org/t/p/w342'
 
   // let API = 'https://api.themoviedb.org/3/movie/550';
-  let API ='https://api.themoviedb.org/3/search/collection';
-  let api_key ='e1ee3a585e3ff2efd9d0a990db15e813';
+  const API = 'https://api.themoviedb.org/3/search/collection'
+  const api_key = 'e1ee3a585e3ff2efd9d0a990db15e813'
 
-  
-  let URL_IMG=''
-  let API_CONFIG = 'https://api.themoviedb.org/3/configuration?api_key='+api_key;
+  let URL_IMG = ''
+  const API_CONFIG = 'https://api.themoviedb.org/3/configuration?api_key=' + api_key
   fetch(API_CONFIG)
-  .then((resp)=> resp.json())
-  .then(({images}) => {
-    let baseUrl = images.secure_base_url;
-    let size =images.still_sizes[3];
-    URL_IMG = baseUrl + size;
+    .then((resp) => resp.json())
+    .then(({ images }) => {
+      const baseUrl = images.secure_base_url
+      const size = images.still_sizes[3]
+      URL_IMG = baseUrl + size
     // movies = responseMovies.results;
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  }
-  );
-
+    })
+    .catch((error) => {
+      console.error('Error:', error)
+    }
+    )
 
   // fetch(API + '?api_key=' + api_key+ '&query=batman')
   // .then((resp)=> resp.json())
@@ -42,31 +37,28 @@ function App() {
   //   console.error('Error:', error);
   // });
 
-  async function searchMovies(e) {
-    e.preventDefault();
-    let query = e.target[0].value;
-    if (!query) return;
+  async function searchMovies (e) {
+    e.preventDefault()
+    const query = e.target[0].value
+    if (!query) return
 
-    let newMOvies = await getMovies(query);
+    const newMOvies = await getMovies(query)
     // console.log('new MOvies',newMOvies);
     // newMOvies = responseMovies.results;
 
-    
-    setMovies(newMOvies.results);
+    setMovies(newMOvies.results)
   }
-
-  
 
   return (
     <main className='container'>
-      <form  onSubmit={(e) => {searchMovies(e)}}>
+      <form onSubmit={(e) => { searchMovies(e) }}>
         <h1>Search Movies</h1>
-        <input type="text" placeholder="Search for a movie..." />
+        <input type='text' placeholder='Search for a movie...' />
         <button>Search</button>
       </form>
-      <div className= "App">
+      <div className='App'>
         {
-          movies.map(movie => movie?.poster_path && <CardMovie movie={movie} key={movie.id}/>)
+          movies.map(movie => movie?.poster_path && <CardMovie movie={movie} key={movie.id} />)
         }
 
       </div>

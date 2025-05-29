@@ -1,13 +1,10 @@
-
 import './App.css'
 
-function App() {
-
+function App () {
   return (
     <>
-    <h3>Hover Ball</h3>
-      <div className='ball'>
-      </div>
+      <h3>Hover Ball</h3>
+      <div className='ball' />
     </>
   )
 }
