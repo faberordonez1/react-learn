@@ -31,14 +31,15 @@ confetti()
 
 
 ```bash
- npm i standard -D
+ npm install standard -D
  ```
 * Add in Packaje.json
 
 ```json
 "scripts": {
     // Otros scripts
-    "lint": "standard"
+    "lint": "standard",
+    "lint-standard": "standard"
   },
 
  "eslintConfig": {
@@ -49,4 +50,33 @@ confetti()
       "eslint.config.js"
     ]
   }
+```
+
+`eslint.ignore`
+```
+eslint.config.js
+vite.config.js
+node_modules
+package-lock.json
+dist
+```
+
+`setting vscode`
+```json
+"eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.workingDirectories": [
+    "."
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.format.enable": true,
+  "javascript.format.enable": false,
+  "typescript.format.enable": false
 ```

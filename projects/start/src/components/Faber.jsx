@@ -1,4 +1,4 @@
-export default function Faber() {
+export default function Faber () {
   return (
     <div>
       <h1>Faber</h1>
