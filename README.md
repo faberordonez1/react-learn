@@ -11,7 +11,21 @@ npm create vite@latest
 
 * Componentes deben ser en PascalCase
 * properties y css en linea en camelCase
+
+## Use State
 * Los estados nunca se deben mutar
+
+## Use Efect
+**Dependencias**  Array con las variables que si cambian, se debe ejecutar el useEffect
+
+* Dentro de un condicional no meter un hook (el hook siempre esta a nivel ppal), dentro de un hook si se puede meter un condicional
+
+```jsx
+```
+
+# Suscripciones de Eventos en navegador
+getEventListeners(window);
+
 
 # Confetti
 
@@ -81,3 +95,12 @@ dist
   "javascript.format.enable": false,
   "typescript.format.enable": false
 ```
+
+# Netlify drop
+[Netlify drop](https://app.netlify.com/drop)
+
+# Implementar React con vite
+
+* [Intalar Plugin en Vite y crear  vite.config](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
+* [Instalar react react-dom y configurar punto de entrada](https://es.react.dev/learn/add-react-to-an-existing-project)
+* [NPM react](https://www.npmjs.com/package/react)
