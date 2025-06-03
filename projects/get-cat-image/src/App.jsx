@@ -1,13 +1,18 @@
 import { useEffect, useState } from 'react'
-import { getFrase } from './services/Api'
+import { fetchFrase } from './services/Api'
 import './App.css'
 
 export default function App () {
   const [palabra, setPalabra] = useState()
   const [urlImg, setUrlImage] = useState()
 
+  const getFrase = async () => {
+    const palabra = await fetchFrase()
+    setPalabra(palabra)
+  }
+
   useEffect(() => {
-    getFrase().then((primeraPalabra) => setPalabra(primeraPalabra))
+    getFrase()
   }, [])
 
   useEffect(() => {
@@ -19,9 +24,7 @@ export default function App () {
       .then(res => setUrlImage(res.url))
   }, [palabra])
 
-  const handleClick = () => {
-    console.log('click')
-  }
+  const handleClick = () => getFrase()
 
   return (
     <main>
