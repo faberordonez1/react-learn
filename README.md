@@ -1,3 +1,27 @@
+# Proyectos
+[Start Project](/projects/start/)
+* Implimentación inicial y pruebas
+
+[hola Mundo](/projects/00-hola-mundo/) 
+* Props 
+* Use State
+
+[Ball Hover](/projects/ball-hover/)
+* Use Effects con event listener
+
+[get cat image](/projects/get-cat-image/)
+* Custom Hooks
+* Uso custom hook en otro componente
+* Use State
+* Use Effects
+
+[Triki](/projects/triki/)
+* Juego Triki
+* Use State
+
+[Search Movies](/projects/search-movies/)
+* Use State
+
 # Iniciar nuevo proyecto con Vite
 
 Posicionarse en la carpeta project y ejecutar
@@ -7,7 +31,7 @@ npm create vite@latest
 ```
 * Solicitara el nombre del proyecto 
 
-# React
+# React ⚛️
 
 * Componentes deben ser en PascalCase
 * properties y css en linea en camelCase
