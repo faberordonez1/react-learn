@@ -14,6 +14,7 @@
 * Uso custom hook en otro componente
 * Use State
 * Use Effects
+* Test con Playwrite
 
 [Triki](/projects/triki/)
 * Juego Triki
@@ -128,3 +129,13 @@ dist
 * [Intalar Plugin en Vite y crear  vite.config](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-swc)
 * [Instalar react react-dom y configurar punto de entrada](https://es.react.dev/learn/add-react-to-an-existing-project)
 * [NPM react](https://www.npmjs.com/package/react)
+
+# Testing con Playwright
+
+```bash
+npm init playwright@latest
+```
+Ver si pasan los test
+```bash
+npx playwright test
+```
