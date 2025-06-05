@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchFrase } from '../services/fetchFrase'
+import { fetchFrase } from '../services/Api'
 
 /**
  * Custom hook para obtener una palabra aleatoria de una API y setearla en el estado palabra.
