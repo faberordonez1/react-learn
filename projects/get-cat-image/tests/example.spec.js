@@ -18,3 +18,14 @@ test('Validar que haya imagen y nombre', async ({ page }) => {
   await expect(imgSrc?.startsWith(PREFIX_IMG)).toBeTruthy()
   await expect(imgSrc2?.startsWith(PREFIX_IMG)).toBe(true)
 })
+
+test('Validar que al hacer click en el boton cambie URL de la imagen', async ({ page }) => {
+  await page.goto(LOCAL_URL)
+  const img = await page.getByRole('img').first()
+  const imgAntes = await img.getAttribute('src')
+  const button = await page.getByRole('button')
+  await button.click()
+  await page.waitForTimeout(700) // puedes ajustar si hay delay en el cambio
+  const imgDespues = await img.getAttribute('src')
+  await expect(imgAntes).not.toBe(imgDespues)
+})
