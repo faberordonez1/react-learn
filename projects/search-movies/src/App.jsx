@@ -1,6 +1,6 @@
 import './App.css'
 import { useEffect, useState } from 'react'
-import { getMovies, getUrlImg } from './service/api'
+import { getMovies } from './service/api'
 import CardMovie from './components/CardMovie'
 
 function App () {
@@ -20,15 +20,12 @@ function App () {
       <header>
         <h1>Buscar Peliculas</h1>
         <form onSubmit={(e) => { searchMovies(e) }}>
-          <input type='text' placeholder='Buscar Pelicula ...' />
+          <input name='buscar' type='text' placeholder='Buscar Pelicula ...' />
           <button>Buscar</button>
         </form>
       </header>
       <main>
-        {
-          movies.map(movie => <CardMovie movie={movie} key={movie.id} />)
-        }
-
+        <CardMovie movies={movies} />
       </main>
     </div>
   )
