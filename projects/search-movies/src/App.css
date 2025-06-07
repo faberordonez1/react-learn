@@ -1,21 +1,38 @@
-.container{
-  margin-inline: 10px;
-}
-.App{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
+ .page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.movie{
-  text-align: center;
-  border-radius: 20px;
-  border:3px solid lightgray;
-  padding: 1rem;
-  width: 100%;
-  height: auto;
+form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
+main{
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  }
+  
+  .movie{
+    text-align: center;
+    border-radius: 20px;
+  /* border:3px solid lightgray; */
+  padding: 1rem;
+  /* width: 100%;
+  height: auto; */
+  max-width: 200px;
+  }
+
 .movie img{
   width: 100%;
   border-radius: 20px;
+  aspect-ratio: 9/14;
 }
