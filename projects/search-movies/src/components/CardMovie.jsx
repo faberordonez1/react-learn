@@ -16,7 +16,7 @@ export default function CardMovie ({ movies }) {
   }
 
   function SinResultados () {
-    return <h4> Sin Resultados</h4>
+    return <h4 style={{ textAlign: 'center' }}> Sin Resultados</h4>
   }
 
   return hayPelis ? <Pelis /> : <SinResultados />
