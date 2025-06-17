@@ -21,6 +21,8 @@ export function getUrlImg () {
 }
 
 export async function getMovies (query) {
+  if (!query) return []
+
   const pathURLImg = await getUrlImg()
   const { results } = await fetchMovies(query)
   return results
