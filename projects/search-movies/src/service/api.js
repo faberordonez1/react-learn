@@ -1,6 +1,7 @@
 const PATH = 'https://api.themoviedb.org/3/'
 const apiKey = 'e1ee3a585e3ff2efd9d0a990db15e813'
 const keyParam = '?api_key=' + apiKey
+let pathURLImg = ''
 
 export function fetchMovies (query) {
   const url = PATH + 'search/collection' + keyParam
@@ -10,12 +11,16 @@ export function fetchMovies (query) {
 }
 
 export function getUrlImg () {
+  if (pathURLImg) return pathURLImg
+
   return fetch(PATH + 'configuration' + keyParam)
     .then((resp) => resp.json())
     .then(({ images }) => {
       const baseUrl = images.secure_base_url
       const size = images.still_sizes[2] // images.still_sizes[3]
-      return baseUrl + size
+      pathURLImg = baseUrl + size
+
+      return pathURLImg
     })
     .catch((e) => console.error('Error al obtener URL:', e))
 }
